@@ -1,12 +1,15 @@
 {
   "name": "januar_webpack-starter",
   "version": "1.0.0",
-  "description": "Webkit + Tailwind Starterkit",
+  "description": "Webkit + Tailwind Example",
   "main": "index.js",
   "repository": "git@github.com:webdevelopersaar/januar_webpack-starter.git",
   "author": "https://github.com/xelaz",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": ">=10.15.0"
+  },
   "scripts": {
     "build:pro": "NODE_ENV=production webpack-cli --mode production",
     "build:dev": "NODE_ENV=development webpack-dev-server --mode development --https --compress"
