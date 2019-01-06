@@ -27,11 +27,11 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-// ReactDOM.render(<App />, elm);
-//<Image />
-
-
-// import('hgdfghgfd').then()
+// you can load scripts asynchron and load it in separate chunck
+// import('hgdfghgfd').then(() => {
+//  console.log('async');
+//
+// })
 
 console.log('Hello World');
 
