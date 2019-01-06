@@ -36,7 +36,9 @@ console.log('Config:', {
 });
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js'
+  },
   devtool: false,
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
@@ -74,6 +76,7 @@ module.exports = {
                 purgecss({
                   content: [
                     'src/**/*.js',
+                    'public/**/*.html',
                   ],
                   whitelist: ['body'],
                   extractors: [
@@ -83,7 +86,7 @@ module.exports = {
                           return content.match(/[A-Za-z0-9-_:\\//]+/g) || [];
                         }
                       },
-                      extensions: ['js', 'jsx'], // file extensions
+                      extensions: ['js', 'jsx', 'html'], // file extensions
                     },
                   ],
                 }),
@@ -157,9 +160,12 @@ module.exports = {
       PUBLIC_PATH: JSON.stringify(publicPath),
     }),
     new ProvidePlugin({ jQuery: 'jquery', $: 'jquery' }),
+    // hide moment locals to avoid big size
     new ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
+    // this is spa application
     new HtmlWebpackPlugin({
       filename: devMode ? 'index.html' : path.resolve(__dirname, 'public/index.html'),
+      template: 'src/index.html'
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -167,6 +173,8 @@ module.exports = {
       filename: '[name].css',
     }),
     new VisualizerPlugin({ filename: 'statistics.html' }),
+    // this is mini example for using plugins api
+    // you can create latest link to your current build version
     {
       apply: (compiler) => {
         compiler.hooks.afterEmit.tap('AfterEmitPlugin', () => {
@@ -184,6 +192,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
     modules: ['node_modules', path.resolve(__dirname, 'src')],
   },
+  // you can ignore files for your bundle
   externals: {
     'react-dom/server': 'ReactDomServer',
   },
@@ -202,6 +211,7 @@ module.exports = {
   },
   output: {
     path: buildDistPath,
+    filename: '[name].js',
     publicPath,
   }
 };

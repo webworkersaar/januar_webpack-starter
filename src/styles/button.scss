@@ -1,0 +1,25 @@
+.btn {
+  @apply w-full block font-bold py-2 px-4 rounded;
+
+  @screen sm {
+    @apply w-1/2;
+  }
+
+  @screen md {
+    @apply w-1/2;
+  }
+}
+
+.btn-blue {
+  @apply bg-blue text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-dark;
+}
+
+.btn-grey {
+  @apply bg-grey-light text-grey-darkest;
+}
+.btn-grey:hover {
+  @apply bg-grey;
+}

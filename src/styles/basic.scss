@@ -1,3 +1,25 @@
+@tailwind preflight;
+@tailwind components;
+
+@import './button';
+
 body {
-  background: red;
+  background: url(../images/statham.png) no-repeat center;
 }
+
+.title {
+  @apply text-3xl font-bold py-8 text-center w-full text-red-dark;
+}
+
+.row-ret {
+  @apply flex-1 bg-grey-light h-12 px-6 mt-2 -mx-3;
+  font-weight: bold;
+}
+
+.image {
+  &__statham {
+    @apply block w-1/2 mx-auto pt-12;
+  }
+}
+
+@tailwind utilities;
